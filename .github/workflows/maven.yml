@@ -6,8 +6,6 @@ name: Java CI with Maven
 on:
   push:
     branches: [ master ]
-  pull_request:
-    branches: [ master ]
 
 jobs:
   build:
@@ -22,3 +20,19 @@ jobs:
         java-version: 1.8
     - name: Build with Maven
       run: mvn -B package --file pom.xml
+    - name: Create staging
+      run: mkdir staging && cp target/JMusicBot-*-All.jar staging
+    - name: Publish release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ github.ref }}
+        release_name: Release ${{ github.ref }}
+        body: |
+          Automatic release
+           - Potentially unstable
+           - Potentially awesome!
+        draft: false
+        prerelease: false
