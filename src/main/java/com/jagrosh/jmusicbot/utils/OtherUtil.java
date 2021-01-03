@@ -154,10 +154,10 @@ public class OtherUtil
     {
         // Get current version number
         String version = getCurrentVersion();
-        
+
         // Check for new version
         String latestVersion = getLatestVersion();
-        
+
         if(latestVersion!=null && !latestVersion.equals(version))
         {
             prompt.alert(Prompt.Level.WARNING, "Version", String.format(NEW_VERSION_AVAILABLE, version, latestVersion));
@@ -169,10 +169,9 @@ public class OtherUtil
     
     public static String getCurrentVersion()
     {
-        if(JMusicBot.class.getPackage()!=null && JMusicBot.class.getPackage().getImplementationVersion()!=null)
-            return JMusicBot.class.getPackage().getImplementationVersion();
-        else
-            return "UNKNOWN";
+        // NOTE: This reflects the UPSTREAM version the fork is developed against. Update reminders are for upstream
+        //       updates only. This should be annoying enough to help keep the bot up-to-date with upstream.
+        return "0.3.2";
     }
     
     public static String getLatestVersion()
