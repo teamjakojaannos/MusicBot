@@ -171,7 +171,7 @@ public class OtherUtil
     {
         // NOTE: This reflects the UPSTREAM version the fork is developed against. Update reminders are for upstream
         //       updates only. This should be annoying enough to help keep the bot up-to-date with upstream.
-        return "0.3.2";
+        return "0.3.4";
     }
     
     public static String getLatestVersion()
